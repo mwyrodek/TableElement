@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Authors>Maciej Wyrodek</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    </ItemGroup>
+
+</Project>
