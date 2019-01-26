@@ -3,7 +3,7 @@ TableElement is small library adding additional functionality to deal with HTML 
 
 For now:
 Support Basic Tables
-For example check class SeleniumTest
+For example check class [SeleniumTest](https://github.com/mwyrodek/TableElement/blob/master/TableElementTests/SeleniumTests.cs)
 
 Road Map:
 1.Fixing Project Test coverage
