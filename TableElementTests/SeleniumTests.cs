@@ -21,12 +21,19 @@ namespace TableElementTests
             var table = chromeDriver.FindTable(By.Id("table1"));
             var headerNames = table.GetHeaderNames();
             var webElement = table.GetCell(3,1);
-            Assert.True(headerNames.Any(x=> x.Contains("Due")));
-            Assert.Equal("$51.00", webElement.Text);
+            Assert.Contains(headerNames, x => x.Contains("Due"));
+            Assert.Equal("$51.00", webElement.Text);           
+        }
+        
+        [Fact]
+        public void TableWithHeader_returns_Value()
+        {
             
-            
-            
-           
+            chromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com/tables");
+            var table = chromeDriver.FindTableWithHeader(By.Id("table1"));
+            var headerNames = table.GetHeaderNames();
+            var webElement = table.GetCell("Email",1);
+            Assert.Equal("fbach@yahoo.com", webElement.Text);           
         }
 
         public SeleniumTests()

@@ -14,6 +14,7 @@ namespace TableElement
         IRow GetRow(int rowNumber);
 
         IWebElement GetCell(int column, int row);
+        IList<ICell> GetColumn(int column);
 
         IList<string> GetHeaderNames();
 

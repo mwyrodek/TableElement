@@ -72,6 +72,24 @@ namespace TableElement
             return Cells.FirstOrDefault(cell => (cell.Row==row && cell.Column==column))?.Element;
         }
 
+        public IList<ICell> GetColumn(int column)
+        {
+            List<ICell> cells = new List<ICell>();
+            foreach (var row in Rows)
+            {
+                if (Rows.Count < column)
+                {
+                    cells.Add(null);
+                }
+                else
+                {
+                    cells.Add(row.GetCell(column));
+                }
+            }
+
+            return cells;
+        }
+
         public IList<string> GetHeaderNames()
         {
             return ColumnHeaders.Select(x => x.Text).ToList();
