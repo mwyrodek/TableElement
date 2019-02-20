@@ -2,19 +2,20 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageVersion>0.1.0</PackageVersion>
+        <PackageVersion>0.2.0</PackageVersion>
         <Authors>Maciej Wyrodek</Authors>
         <NeutralLanguage>pl-PL</NeutralLanguage>
-        <AssemblyVersion>0.0.1.0</AssemblyVersion>
-        <FileVersion>0.0.1.0</FileVersion>
-        <Version>0.1.0-alfa</Version>
+        <AssemblyVersion>0.0.2.0</AssemblyVersion>
+        <FileVersion>0.0.2.0</FileVersion>
+        <Version>0.2.0-beta</Version>
         <Description>TableElement is small library adding additional functionality to deal with HTML tables in C# Webdrvier.
 For now:
 Support Basic Tables
 For example check class https://github.com/mwyrodek/TableElement/blob/master/TableElementTests/SeleniumTests.cs</Description>
         <Copyright>Copyright ©2019 Maciej Wyrodek</Copyright>
         <PackageTags>webdriver table extensions</PackageTags>
-        <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+        <PackageReleaseNotes>Added new type TableWithHeader, 
+Added method to get elements by column.</PackageReleaseNotes>
         <RepositoryUrl>https://github.com/mwyrodek/TableElement</RepositoryUrl>
         <PackageProjectUrl>https://github.com/mwyrodek/TableElement</PackageProjectUrl>
         <PackageIconUrl>https://github.com/mwyrodek/TableElement/raw/master/ico/icon.png</PackageIconUrl>

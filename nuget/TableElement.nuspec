@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+    <metadata>
+  
+        <id>Webdriver.HtmlTable</id>
+
+        <version>0.1.0-prealfa</version>
+
+        <authors>Maciej Wyrodek</authors>
+
+        <owners>MaciejWyrodek</owners>
+        
+        <projectUrl>https://github.com/mwyrodek/TableElement</projectUrl>
+
+        <license type="file">LICENSE</license> 
+
+        <!-- The icon is used in Visual Studio's package manager UI -->
+        <iconUrl>https://github.com/mwyrodek/TableElement/raw/master/ico/icon.png</iconUrl>
+
+        <!-- 
+            If true, this value prompts the user to accept the license when
+            installing the package. 
+        -->
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+        <!-- Any details about this particular release -->
+        <releaseNotes>Initial Release</releaseNotes>
+
+        <!-- 
+            The description can be used in package manager UI. Note that the
+            nuget.org gallery uses information you add in the portal. 
+        -->
+        <description>TableElement is small library adding additional functionality to deal with HTML tables in C# Webdrvier.
+For now:
+Support Basic Tables
+For example check class https://github.com/mwyrodek/TableElement/blob/master/TableElementTests/SeleniumTests.cs</description>
+
+        <!-- Copyright information -->
+        <copyright>Copyright ©2019 Maciej Wyrodek</copyright>
+
+        <!-- Tags appear in the gallery and can be used for tag searches -->
+        <tags>webdriver table extensions</tags>
+
+        <!-- Dependencies are automatically installed when the package is installed -->
+        <dependencies>
+            <dependency id="Selenium.WebDriver" version="3.141.0" />
+        </dependencies>
+    </metadata>
+
+    <!-- A readme.txt to display when the package is installed -->
+    <files>
+        <file src="LICENSE" target="" />
+    </files>
+</package>
