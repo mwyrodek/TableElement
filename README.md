@@ -1,4 +1,4 @@
-# TableElement
+# TableElement  [![NuGet Badge](https://buildstats.info/nuget/TableElement)](https://www.nuget.org/packages/TableElement)
 TableElement is small library adding additional functionality to deal with HTML tables in C# Webdrvier.
 
 
