@@ -71,7 +71,9 @@ namespace TableElementTests
 
         public SeleniumTests()
         {
-            chromeDriver = new ChromeDriver(@"C:\git\chromedriver");
+            var path = System.IO.Path.GetDirectoryName( 
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Substring(6);
+            chromeDriver = new ChromeDriver(path);
             chromeDriver.Navigate().GoToUrl("http://the-internet.herokuapp.com/tables");
         }
 
