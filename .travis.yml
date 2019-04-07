@@ -5,5 +5,5 @@ install:
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
 
 script:
-  - msbuild /p:Configuration=Release TableElement-name.sln
-  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./TableElementTests/bin/Release/TableElementTests.dll.dll
+  - msbuild /p:Configuration=Release TableElement.sln
+  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./TableElementTests/bin/Release/TableElementTests.dll
