@@ -6,4 +6,4 @@ install:
 
 script:
   - msbuild /p:Configuration=Release TableElement.sln
-  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./TableElementTests/bin/Release/TableElementTests.dll
+  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./TableElementTests/bin/Release/netcoreapp2.1/TableElementTests.dll
