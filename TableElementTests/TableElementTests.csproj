@@ -18,13 +18,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>C:\Users\mwk\.nuget\packages\selenium.webdriver\3.141.0\lib\netstandard2.0\WebDriver.dll</HintPath>
-      </Reference>
+      <ProjectReference Include="..\TableElement\TableElement.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TableElement\TableElement.csproj" />
+      <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>C:\Users\mwk\.nuget\packages\selenium.webdriver\3.141.0\lib\netstandard2.0\WebDriver.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

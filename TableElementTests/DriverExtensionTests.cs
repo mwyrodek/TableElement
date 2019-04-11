@@ -1,4 +1,3 @@
-using System;
 using Moq;
 using OpenQA.Selenium;
 using TableElement;
