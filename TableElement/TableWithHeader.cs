@@ -11,21 +11,21 @@ namespace TableElement
         {
             if (Rows.Any(r => r.Cells.Count != ColumnHeaders.Count))
             {
-                throw new HeaderMissMatch("Table body and header");
+                throw new HeaderMissMatchException("Table body and header");
             }
         }
 
         public IWebElement GetCell(string header, int row)
         {
-            var position = GetHeadePosition(header);
+            var position = GetHeaderPosition(header);
             return GetCell(position, row);
         }
 
-        private int GetHeadePosition(string header)
+        private int GetHeaderPosition(string header)
         {
-            if (ColumnHeaders.All(ie => ie.Text != header))
+            if (ColumnHeaders.All(ie => ie.Text != header)) //todo add test for exception
             {
-                throw new HeaderNotFound($"Header {header} was not found.");
+                throw new HeaderNotFoundException($"Header {header} was not found.");
             }
 
             var element = ColumnHeaders.First(ie => ie.Text == header);
@@ -33,9 +33,10 @@ namespace TableElement
             return position;
         }
 
+        //todo add test
         public IList<ICell> GetColumn(string header)
         {
-            var position = GetHeadePosition(header);
+            var position = GetHeaderPosition(header);
             return GetColumn(position);
         }
     }

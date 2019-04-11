@@ -11,19 +11,18 @@ namespace TableElement
     {
         public TableElement(IWebElement tableRoot)
         {
+            ValidateTableOnInit(tableRoot);
             Table = tableRoot;
             Rows = new List<IRow>();
             Cells = new List<ICell>();
-            IsTable();
             FillHeader();
             FillBody();
-
-
         }
 
         private void FillBody()
         {
             var rows = Table.FindElements(By.CssSelector("tr"));
+            //todo maybe this should be moved to fill header ergo row with headers should be removed after filling?
             bool hasHeader = ColumnHeaders.Count > 0;
             int iterator = hasHeader ? 1 : 0;
 
@@ -31,9 +30,10 @@ namespace TableElement
             {
                 if(hasHeader)
                 {
+                    //first row will contiain hearedrs;
                     CreateRow(rows[i], i-1);
                 }
-                else
+                else //todo cover it with test
                 {
                     CreateRow(rows[i], i);
                 }
@@ -54,7 +54,7 @@ namespace TableElement
             Rows.Add(new TableRow(list));
         }
 
-        public IWebElement Table { get; }
+        public virtual IWebElement Table { get; }
 
         public IList<IWebElement> ColumnHeaders { get; private set; }
 
@@ -62,7 +62,7 @@ namespace TableElement
 
         public IList<IRow> Rows { get; private set; }
 
-        public IRow GetRow(int rowNumber)
+        public IRow GetRow(int rowNumber) //todo addtests
         {
             return Rows[rowNumber];
         }
@@ -72,7 +72,8 @@ namespace TableElement
             return Cells.FirstOrDefault(cell => (cell.Row==row && cell.Column==column))?.Element;
         }
 
-        public IList<ICell> GetColumn(int column)
+        //todo add  documentation
+        public IList<ICell> GetColumn(int column) //todo add test for both tipes
         {
             List<ICell> cells = new List<ICell>();
             foreach (var row in Rows)
@@ -100,11 +101,11 @@ namespace TableElement
             ColumnHeaders = Table.FindElements(By.CssSelector("th")).ToList();
         }
 
-        private void IsTable()
+        private static void ValidateTableOnInit(IWebElement tableRoot)
         {
             try
             {
-                var tbody = Table.FindElement(By.CssSelector("tr"));
+                tableRoot.FindElement(By.CssSelector("tr"));
             }
             catch (NotFoundException e)
             {
