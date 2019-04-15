@@ -21,4 +21,5 @@ steps:
     testSelector: 'testAssemblies'
     codeCoverageEnabled: true
     uiTests: true
-    vsTestVersion: '15.0'
+    vsTestVersion: '16.0'
+    runSettingsFile: 'CodeCoverage.runsettings'
