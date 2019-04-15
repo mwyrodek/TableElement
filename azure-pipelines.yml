@@ -8,7 +8,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'vs2019-win2016'
+  vmImage: 'vs2017-win2016'
 
 variables:
   buildConfiguration: 'Release'
@@ -21,5 +21,5 @@ steps:
     testSelector: 'testAssemblies'
     codeCoverageEnabled: true
     uiTests: true
-    vsTestVersion: '16.0'
+    vsTestVersion: '15.0'
     runSettingsFile: 'CodeCoverage.runsettings'
