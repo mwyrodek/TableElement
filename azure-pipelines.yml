@@ -22,4 +22,4 @@ steps:
     codeCoverageEnabled: true
     uiTests: true
     vsTestVersion: '15.0'
-    runSettingsFile: 'CodeCoverage.runsettings'
+    runSettingsFile: 'TableElementTests/CodeCoverage.runsettings'
