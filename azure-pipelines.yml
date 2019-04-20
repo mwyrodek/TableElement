@@ -14,6 +14,12 @@ variables:
   buildConfiguration: 'Debug'
 
 steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: '9b0b72f5-237c-4641-9e1d-37d84a9ef0bb'
+    organization: 'mwyrodek-github'
+    projectKey: 'mwyrodek_TableElement'
+    projectName: 'TableEelement'
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: VSTest@2
@@ -23,3 +29,8 @@ steps:
     uiTests: true
     vsTestVersion: '15.0'
     runSettingsFile: 'TableElementTests/CodeCoverage.runsettings'
+- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+  displayName: 'Run Code Analysis'
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
