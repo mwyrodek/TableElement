@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using TableElement.Interfaces;
 
 namespace TableElement
 {

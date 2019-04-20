@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-namespace TableElement
+namespace TableElement.Interfaces
 {
     public interface IMappers
     {
-        IList<T> MapTableToObjectList<T>(ITableWithHeader Table, IDictionary<string,int> Map) where T : new();
-        IList<T> MapTableToObjectList<T>(ITableWithHeader Table) where T : new();
+        IList<T> MapTableToObjectList<T>(ITableWithHeader table, IDictionary<string,int> map) where T : new();
+        IList<T> MapTableToObjectList<T>(ITableWithHeader table) where T : new();
     }
 }

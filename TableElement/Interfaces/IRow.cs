@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TableElement
+namespace TableElement.Interfaces
 {
     public interface IRow
     {

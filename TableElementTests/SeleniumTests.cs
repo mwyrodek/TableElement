@@ -27,10 +27,7 @@ namespace TableElementTests
         [Fact]
         public void TableWithHeader_returns_Value()
         {
-            
-            
             var table = chromeDriver.FindTableWithHeader(By.Id("table1"));
-            var headerNames = table.GetHeaderNames();
             var webElement = table.GetCell("Email",1);
             Assert.Equal("fbach@yahoo.com", webElement.Text);           
         }
@@ -49,9 +46,9 @@ namespace TableElementTests
             map.Add("WebSite",4);
             var dataTableExampleOnes = mapper.MapTableToObjectList<DataTableExampleOne>(table, map);
             
-            Assert.Equal(dataTableExampleOnes.First().LastName, "Smith");
-            Assert.Equal(dataTableExampleOnes.First().FirstName, "John");
-            Assert.Equal(dataTableExampleOnes.Last().WebSite, "http://www.timconway.com");
+            Assert.Equal("Smith", dataTableExampleOnes.First().LastName);
+            Assert.Equal("John", dataTableExampleOnes.First().FirstName);
+            Assert.Equal("http://www.timconway.com", dataTableExampleOnes.Last().WebSite);
                        
         }
         
@@ -63,9 +60,9 @@ namespace TableElementTests
             var mapper = new Mapper();
             var dataTableExampleOnes = mapper.MapTableToObjectList<DataTableExampleOne>(table);
             
-            Assert.Equal(dataTableExampleOnes.First().LastName, "Smith");
-            Assert.Equal(dataTableExampleOnes.First().FirstName, "John");
-            Assert.Equal(dataTableExampleOnes.Last().WebSite, "http://www.timconway.com");
+            Assert.Equal("Smith", dataTableExampleOnes.First().LastName);
+            Assert.Equal("John", dataTableExampleOnes.First().FirstName);
+            Assert.Equal("http://www.timconway.com", dataTableExampleOnes.Last().WebSite);
                        
         }
 

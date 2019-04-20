@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 
-namespace TableElement
+namespace TableElement.Interfaces
 {
     public interface ITableWithHeader : ITable
     {

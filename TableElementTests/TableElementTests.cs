@@ -13,7 +13,7 @@ namespace TableElementTests
             new[] {"c0r1", "c1r1", "c2r1"},
             new[] {"c0r2", "c1r2", "c2r2"}
         };
-        
+
         private string[][] expectedBodyMergedCells =
         {
             new[] {"c0r0", "c1r0", "c2r0"},
@@ -33,7 +33,7 @@ namespace TableElementTests
             Assert.Equal(9, tableElement.Cells.Count);
             Assert.Equal(0, tableElement.ColumnHeaders.Count);
         }
-        
+
         [Fact]
         public void CreateElement_ValidInputUnEvenTable_NoHeader()
         {
@@ -60,8 +60,8 @@ namespace TableElementTests
         public void CreateElement_InvalidInput_ThrowsException()
         {
             var notATable = new MockedTable().CreateNotATable();
-            Exception ex =
-                Assert.Throws<TableNotFoundException>(() => new TableElement.TableElement(notATable));
+
+            Assert.Throws<TableNotFoundException>(() => new TableElement.TableElement(notATable));
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace TableElementTests
             var expectedCellText = expectedBody[1][0];
             Assert.Equal(expectedCellText, actualCellText);
         }
-        
+
         [Theory]
         [InlineData(1, 5)]
         [InlineData(5, 1)]
@@ -85,10 +85,10 @@ namespace TableElementTests
             var tableElement = new TableElement.TableElement(realTableNoHeader);
 
             var cell = tableElement.GetCell(column, row);
-            
+
             Assert.Null(cell);
         }
-        
+
         [Fact]
         public void GetHeaderNames_NoHearders_ReturnsEmptyList()
         {
@@ -99,7 +99,7 @@ namespace TableElementTests
 
             Assert.True(headerNames.IsNullOrEmpty());
         }
-        
+
         [Fact]
         public void GetHeaderNames_FoundHearders_ReturnsProperNames()
         {
@@ -121,7 +121,7 @@ namespace TableElementTests
             var elementText = row.GetCell(0).Element.Text;
             Assert.Equal(elementText, expectedBody[1][0]);
         }
-        
+
         [Fact]
         public void GetRows_TableWithNoHeader_ReturnsProperRow()
         {
@@ -132,7 +132,7 @@ namespace TableElementTests
             var elementText = row.GetCell(0).Element.Text;
             Assert.Equal(elementText, expectedBody[0][0]);
         }
-        
+
         [Fact]
         public void GetCell_TableWithNoHeader_ReturnsProperCell()
         {
@@ -142,7 +142,7 @@ namespace TableElementTests
             var text = tableElement.GetCell(1, 2).Text;
             Assert.Equal(text, expectedBody[2][1]);
         }
-        
+
         [Theory]
         [InlineData(1, 5)]
         [InlineData(5, 1)]
@@ -154,17 +154,17 @@ namespace TableElementTests
             var webElement = tableElement.GetCell(column, row);
             Assert.Null(webElement);
         }
-        
+
         [Fact]
         public void GetCell_TableWithHeader_ReturnsProperCell()
         {
             var realTableNoHeader = new MockedTable().CreateTableNoHeader(expectedBody);
             var tableElement = new TableElement.TableElement(realTableNoHeader);
-            
+
             var text = tableElement.GetCell(1, 2).Text;
             Assert.Equal(text, expectedBody[2][1]);
         }
-        
+
         [Theory]
         [InlineData(1, 5)]
         [InlineData(5, 1)]
@@ -173,11 +173,11 @@ namespace TableElementTests
         {
             var realTableNoHeader = new MockedTable().CreateTableNoHeader(expectedBody);
             var tableElement = new TableElement.TableElement(realTableNoHeader);
-            
+
             var webElement = tableElement.GetCell(column, row);
             Assert.Null(webElement);
         }
-        
+
         [Fact]
         public void GetColumn_EvenTable_ReturnsProperCells()
         {
@@ -189,15 +189,15 @@ namespace TableElementTests
             Assert.Equal(column[1].Element.Text, expectedBody[1][2]);
             Assert.Equal(column[2].Element.Text, expectedBody[2][2]);
         }
-        
+
         [Fact]
         public void GetColumn_UnEvenTable_ReturnsProperOnUnEvenRow()
         {
             var realTableNoHeader = new MockedTable().CreateTableNoHeader(expectedBodyMergedCells);
             var tableElement = new TableElement.TableElement(realTableNoHeader);
-            
-            var text = tableElement.GetCell(1, 2).Text;
+
             var column = tableElement.GetColumn(2);
+
             Assert.Equal(column[0].Element.Text, expectedBody[0][2]);
             Assert.Null(column[1]);
             Assert.Equal(column[2].Element.Text, expectedBody[2][2]);

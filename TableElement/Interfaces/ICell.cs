@@ -1,6 +1,6 @@
 using OpenQA.Selenium;
 
-namespace TableElement
+namespace TableElement.Interfaces
 {
     public interface ICell
     {

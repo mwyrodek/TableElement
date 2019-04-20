@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TableElement.Interfaces;
 
 namespace TableElement
 {
@@ -8,17 +9,17 @@ namespace TableElement
         /// <summary>
         /// maps field to object based on map - PropertyName, ColumnNumber
         /// </summary>
-        /// <param name="Table"></param>
-        /// <param name="Map"></param>
+        /// <param name="table"></param>
+        /// <param name="map"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public IList<T> MapTableToObjectList<T>(ITableWithHeader Table, IDictionary<string, int> Map) where T : new()
+        public IList<T> MapTableToObjectList<T>(ITableWithHeader table, IDictionary<string, int> map) where T : new()
         {
             var list = new List<T>();
-            foreach (var row in Table.Rows)
+            foreach (var row in table.Rows)
             {
-                list.Add(CastRow<T>(row, Map));
+                list.Add(CastRow<T>(row, map));
             }
 
             return list;
@@ -45,16 +46,16 @@ namespace TableElement
         /// <summary>
         ///  maps collumn to object based on properties and headers name. ignoring whitespaces 
         /// </summary>
-        /// <param name="Table"></param>
+        /// <param name="table"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public IList<T> MapTableToObjectList<T>(ITableWithHeader Table) where T : new()
+        public IList<T> MapTableToObjectList<T>(ITableWithHeader table) where T : new()
         {
             var list = new List<T>();
-            var headers = RemoveWhiteSpaces(Table);
+            var headers = RemoveWhiteSpaces(table);
 
-            foreach (var row in Table.Rows)
+            foreach (var row in table.Rows)
             {
                 list.Add(CastRow<T>(row, headers));
             }

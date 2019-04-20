@@ -5,7 +5,8 @@ namespace TableElement.Exception
     [Serializable()]
     public class TableNotFoundException : System.Exception
     {
-        public TableNotFoundException() : base() { }
+        public TableNotFoundException()
+        { }
         public TableNotFoundException(string message) : base(message) { }
         public TableNotFoundException(string message, System.Exception inner) : base(message, inner) { }
 

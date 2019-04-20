@@ -5,7 +5,8 @@ namespace TableElement.Exception
     [Serializable()]
     public class HeaderNotFoundException : System.Exception
     {
-        public HeaderNotFoundException() : base() { }
+        public HeaderNotFoundException()
+        { }
         public HeaderNotFoundException(string message) : base(message) { }
         public HeaderNotFoundException(string message, System.Exception inner) : base(message, inner) { }
 
