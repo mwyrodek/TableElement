@@ -23,3 +23,11 @@ steps:
     uiTests: true
     vsTestVersion: '15.0'
     runSettingsFile: 'TableElementTests/CodeCoverage.runsettings'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: '9b0b72f5-237c-4641-9e1d-37d84a9ef0bb'
+    organization: 'mwyrodek-github'
+    projectKey: 'mwyrodek_TableElement'
+    projectName: 'TableEelement'
+- task: SonarCloudPublish@1
+  inputs:
