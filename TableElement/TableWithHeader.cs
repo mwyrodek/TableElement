@@ -45,7 +45,7 @@ namespace TableElement
 
         private int GetHeaderPosition(string header)
         {
-            if (ColumnHeaders.All(ie => ie.Text != header)) //todo add test for exception
+            if (ColumnHeaders.All(ie => ie.Text != header))
                 throw new HeaderNotFoundException($"Header {header} was not found.");
 
             var element = ColumnHeaders.First(ie => ie.Text == header);

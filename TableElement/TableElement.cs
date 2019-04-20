@@ -41,7 +41,7 @@ namespace TableElement
         /// </summary>
         /// <param name="rowNumber">row number - start from 0</param>
         /// <returns>row</returns>
-        public IRow GetRow(int rowNumber) //todo addtests
+        public IRow GetRow(int rowNumber)
         {
             return Rows[rowNumber];
         }
@@ -65,7 +65,7 @@ namespace TableElement
         /// </summary>
         /// <param name="column"></param>
         /// <returns></returns>
-        public IList<ICell> GetColumn(int column) //todo add test for both tipes
+        public IList<ICell> GetColumn(int column) 
         {
             return (from row in Rows select row.Cells.Count <= column ? null : row.GetCell(column)).ToList();
         }
@@ -87,14 +87,14 @@ namespace TableElement
         private void FillBody()
         {
             var rows = Table.FindElements(By.CssSelector("tr"));
-            //todo maybe this should be moved to fill header ergo row with headers should be removed after filling?
+            
             var hasHeader = ColumnHeaders.Count > 0;
             var iterator = hasHeader ? 1 : 0;
 
             for (var i = iterator; i < rows.Count; i++)
                 if (hasHeader)
                     CreateRow(rows[i], i - 1);
-                else //todo cover it with test
+                else 
                     CreateRow(rows[i], i);
         }
 
