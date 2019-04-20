@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using OpenQA.Selenium;
 
 namespace TableElement
 {

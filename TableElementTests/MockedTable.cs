@@ -40,7 +40,7 @@ namespace TableElementTests
             mockTableRootElement.Setup(foo => foo.FindElement(By.CssSelector("tr")))
                 .Throws(new NotFoundException());
 
-            var trList = new List<IWebElement>() { };
+            var trList = new List<IWebElement>();
             var trCollection = new ReadOnlyCollection<IWebElement>(trList);
 
             mockTableRootElement.Setup(foo => foo.FindElements(By.CssSelector("tr")))

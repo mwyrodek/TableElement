@@ -1,8 +1,5 @@
 using System;
-using System.Drawing;
 using Castle.Core.Internal;
-using OpenQA.Selenium.Chrome;
-using TableElement;
 using TableElement.Exception;
 using Xunit;
 

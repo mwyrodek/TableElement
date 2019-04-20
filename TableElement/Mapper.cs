@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using TableElement.Exception;
 
 namespace TableElement
 {
@@ -35,7 +33,7 @@ namespace TableElement
                 var columnNumber = map[propertyInfo.Name];
                 var elementText = row.GetCell(columnNumber).Element.Text;
 
-                if (null != propertyInfo && propertyInfo.CanWrite)
+                if (propertyInfo.CanWrite)
                 {
                     propertyInfo.SetValue(foo, elementText, null);
                 }
@@ -85,7 +83,7 @@ namespace TableElement
                 var columnNumber = headers.IndexOf(propertyInfo.Name);
                 var elementText = row.GetCell(columnNumber).Element.Text;
 
-                if (null != propertyInfo && propertyInfo.CanWrite)
+                if (propertyInfo.CanWrite)
                 {
                     propertyInfo.SetValue(foo, elementText, null);
                 }
