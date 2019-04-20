@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TableElement.Interfaces;
 
 namespace TableElement
@@ -7,7 +8,7 @@ namespace TableElement
     public class Mapper : IMappers
     {
         /// <summary>
-        /// maps field to object based on map - PropertyName, ColumnNumber
+        ///     maps field to object based on map - PropertyName, ColumnNumber
         /// </summary>
         /// <param name="table"></param>
         /// <param name="map"></param>
@@ -16,13 +17,21 @@ namespace TableElement
         /// <exception cref="NotImplementedException"></exception>
         public IList<T> MapTableToObjectList<T>(ITableWithHeader table, IDictionary<string, int> map) where T : new()
         {
-            var list = new List<T>();
-            foreach (var row in table.Rows)
-            {
-                list.Add(CastRow<T>(row, map));
-            }
+            return table.Rows.Select(row => CastRow<T>(row, map)).ToList();
+        }
 
-            return list;
+        /// <summary>
+        ///     maps collumn to object based on properties and headers name. ignoring whitespaces
+        /// </summary>
+        /// <param name="table"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public IList<T> MapTableToObjectList<T>(ITableWithHeader table) where T : new()
+        {
+            var headers = RemoveWhiteSpaces(table);
+
+            return table.Rows.Select(row => CastRow<T>(row, headers)).ToList();
         }
 
         private T CastRow<T>(IRow row, IDictionary<string, int> map) where T : new()
@@ -34,44 +43,15 @@ namespace TableElement
                 var columnNumber = map[propertyInfo.Name];
                 var elementText = row.GetCell(columnNumber).Element.Text;
 
-                if (propertyInfo.CanWrite)
-                {
-                    propertyInfo.SetValue(foo, elementText, null);
-                }
+                if (propertyInfo.CanWrite) propertyInfo.SetValue(foo, elementText, null);
             }
 
             return foo;
         }
 
-        /// <summary>
-        ///  maps collumn to object based on properties and headers name. ignoring whitespaces 
-        /// </summary>
-        /// <param name="table"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public IList<T> MapTableToObjectList<T>(ITableWithHeader table) where T : new()
+        private IList<string> RemoveWhiteSpaces(ITable table)
         {
-            var list = new List<T>();
-            var headers = RemoveWhiteSpaces(table);
-
-            foreach (var row in table.Rows)
-            {
-                list.Add(CastRow<T>(row, headers));
-            }
-
-            return list;
-        }
-
-        private IList<string> RemoveWhiteSpaces(ITableWithHeader table)
-        {
-            var list = new List<string>();
-            foreach (var header in table.GetHeaderNames())
-            {
-                list.Add(header.Replace(" ", ""));
-            }
-
-            return list;
+            return table.GetHeaderNames().Select(header => header.Replace(" ", "")).ToList();
         }
 
 
@@ -84,10 +64,7 @@ namespace TableElement
                 var columnNumber = headers.IndexOf(propertyInfo.Name);
                 var elementText = row.GetCell(columnNumber).Element.Text;
 
-                if (propertyInfo.CanWrite)
-                {
-                    propertyInfo.SetValue(foo, elementText, null);
-                }
+                if (propertyInfo.CanWrite) propertyInfo.SetValue(foo, elementText, null);
             }
 
             return foo;

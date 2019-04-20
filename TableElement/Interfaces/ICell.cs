@@ -4,8 +4,8 @@ namespace TableElement.Interfaces
 {
     public interface ICell
     {
-        int Column{ get;}
+        int Column { get; }
         int Row { get; }
-        IWebElement Element{ get; }
+        IWebElement Element { get; }
     }
 }

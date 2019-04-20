@@ -8,7 +8,7 @@ namespace TableElementTests
 {
     internal class MockedTable
     {
-        Mock<IWebElement> mockTableRootElement = new Mock<IWebElement>();
+        private readonly Mock<IWebElement> mockTableRootElement = new Mock<IWebElement>();
 
         internal IWebElement CreateTableNoHeader(string[][] body)
         {
@@ -22,11 +22,7 @@ namespace TableElementTests
         internal IWebElement CreateTableWithHeader(string[][] body, string[] header)
         {
             CreateBody(body);
-            var thList = new List<IWebElement>();
-            foreach (var text in header)
-            {
-                thList.Add(CreateMockElementWithText(text));
-            }
+            var thList = header.Select(CreateMockElementWithText).ToList();
 
             var thCollection = new ReadOnlyCollection<IWebElement>(thList);
             mockTableRootElement.Setup(foo => foo.FindElements(By.CssSelector("th")))
@@ -57,11 +53,7 @@ namespace TableElementTests
 
         private IWebElement CreateMockElementReturnsList(string[] texts)
         {
-            var tdList = new List<IWebElement>();
-            foreach (var text in texts)
-            {
-                tdList.Add(CreateMockElementWithText(text));
-            }
+            var tdList = texts.Select(CreateMockElementWithText).ToList();
 
             var tdCollection = new ReadOnlyCollection<IWebElement>(tdList);
             var trElement = new Mock<IWebElement>();
@@ -72,10 +64,7 @@ namespace TableElementTests
         private void CreateBody(string[][] body)
         {
             var trList = new List<IWebElement>();
-            foreach (var text in body)
-            {
-                trList.Add(CreateMockElementReturnsList(text));
-            }
+            foreach (var text in body) trList.Add(CreateMockElementReturnsList(text));
 
             var trCollection = new ReadOnlyCollection<IWebElement>(trList);
 

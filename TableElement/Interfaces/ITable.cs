@@ -6,9 +6,9 @@ namespace TableElement.Interfaces
     public interface ITable
     {
         IWebElement Table { get; }
-        IList<IWebElement> ColumnHeaders{ get; }
-        IList<ICell> Cells{ get; }
-        IList<IRow> Rows{ get; }
+        IList<IWebElement> ColumnHeaders { get; }
+        IList<ICell> Cells { get; }
+        IList<IRow> Rows { get; }
 
         //doesnt count footer and header
         IRow GetRow(int rowNumber);
@@ -17,7 +17,5 @@ namespace TableElement.Interfaces
         IList<ICell> GetColumn(int column);
 
         IList<string> GetHeaderNames();
-
-
     }
 }

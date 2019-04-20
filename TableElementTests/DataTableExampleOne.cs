@@ -7,6 +7,5 @@ namespace TableElementTests
         public string Email { get; set; }
         public string Due { get; set; }
         public string WebSite { get; set; }
-        
     }
 }

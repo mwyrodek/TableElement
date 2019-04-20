@@ -4,7 +4,7 @@ namespace TableElement.Interfaces
 {
     public interface IRow
     {
-        IList<ICell> Cells{ get;}
+        IList<ICell> Cells { get; }
 
         ICell GetCell(int positon);
     }

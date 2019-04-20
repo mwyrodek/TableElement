@@ -4,17 +4,18 @@ using TableElement.Interfaces;
 
 namespace TableElement
 {
-    public class TableRow: IRow
+    public class TableRow : IRow
     {
+        public TableRow(IEnumerable<ICell> cells)
+        {
+            Cells = cells.ToList();
+        }
+
         public IList<ICell> Cells { get; }
+
         public ICell GetCell(int positon)
         {
             return Cells[positon];
-        }
-
-        public TableRow(List<ICell> cells)
-        {
-            Cells = cells.ToList();
         }
     }
 }
