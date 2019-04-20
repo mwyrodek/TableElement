@@ -1,4 +1,5 @@
 # ASP.NET Core
+
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -7,10 +8,10 @@ trigger:
 - master
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'vs2017-win2016'
 
 variables:
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Debug'
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
@@ -19,3 +20,6 @@ steps:
   inputs:
     testSelector: 'testAssemblies'
     codeCoverageEnabled: true
+    uiTests: true
+    vsTestVersion: '15.0'
+    runSettingsFile: 'TableElementTests/CodeCoverage.runsettings'
