@@ -31,3 +31,4 @@ steps:
     projectName: 'TableEelement'
 - task: SonarCloudPublish@1
   inputs:
+    pollingTimeoutSec: '300'
