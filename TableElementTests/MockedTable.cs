@@ -63,8 +63,7 @@ namespace TableElementTests
 
         private void CreateBody(string[][] body)
         {
-            var trList = new List<IWebElement>();
-            foreach (var text in body) trList.Add(CreateMockElementReturnsList(text));
+            var trList = body.Select(CreateMockElementReturnsList).ToList();
 
             var trCollection = new ReadOnlyCollection<IWebElement>(trList);
 
