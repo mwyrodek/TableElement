@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageVersion>0.3.0</PackageVersion>
+        <PackageVersion>0.3.1</PackageVersion>
         <Authors>Maciej Wyrodek</Authors>
         <NeutralLanguage>pl-PL</NeutralLanguage>
         <AssemblyVersion>0.0.3.0</AssemblyVersion>
@@ -14,10 +14,13 @@ Support Basic Tables
 For example check class https://github.com/mwyrodek/TableElement/blob/master/TableElementTests/SeleniumTests.cs</Description>
         <Copyright>Copyright ©2019 Maciej Wyrodek</Copyright>
         <PackageTags>webdriver table extensions</PackageTags>
-        <PackageReleaseNotes>Added IMapper and its implementation - 
-This class serves as a helper to easily translated table to list of objects. For examples check GitHub project page.
+        <PackageReleaseNotes>
+Changes:
+Added summary to public methods
 
-You can think of it as deserialization of htmltable to list :)</PackageReleaseNotes>
+Bug fix:
+
+Fixed GetColumn(int column) method which was crashing on tables with different cell count in different rows.</PackageReleaseNotes>
         <RepositoryUrl>https://github.com/mwyrodek/TableElement</RepositoryUrl>
         <PackageProjectUrl>https://github.com/mwyrodek/TableElement</PackageProjectUrl>
         <PackageIconUrl>https://github.com/mwyrodek/TableElement/raw/master/ico/icon.png</PackageIconUrl>
